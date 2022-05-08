@@ -99,12 +99,7 @@ app.post("/register", async (req, res) => {
     avatar: JSON.parse(req.body.avatar),
     birthday_year: req.body.birthday_year,
     created_at: Date.now(),
-    friends: [
-      "2voa0dosl2wyqktr",
-      "2voa0dpzl2wyr4ei",
-      "2voa0bn1l2wtori4",
-      "2voa0a4kl2whqe5t",
-    ],
+    friends: ["2voa0eyel2x16suw", "2voa0ewtl2x15nls"],
     gender: req.body.gender,
     interests: JSON.parse(req.body.interests),
     name: req.body.name,
@@ -118,11 +113,11 @@ app.post("/register", async (req, res) => {
 
   DATABASE.user.push(user);
 
-  await createMatch(2, "Gamer", user.id, "2voa0dosl2wyqktr");
-  await createMatch(8, "Artist", user.id, "2voa0dpzl2wyr4ei");
-  await createMatch(13, "Music lover", user.id, "2voa0dosl2wyqktr");
-  await createMatch(21, "Programmer", user.id, "2voa0bn1l2wtori4");
-  await createMatch(25, "Swiming", user.id, "2voa0a4kl2whqe5t");
+  await createMatch(2, "Gamer", user.id, "2voa0eyel2x16suw");
+  await createMatch(8, "Artist", user.id, "2voa0ewtl2x15nls");
+  await createMatch(13, "Music lover", user.id, "2voa0eyel2x16suw");
+  await createMatch(21, "Programmer", user.id, "2voa0ewtl2x15nls");
+  await createMatch(25, "Swiming", user.id, "2voa0ewtl2x15nls");
   await req.dbSync();
 
   res.statusCode = 201;

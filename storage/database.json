@@ -1,338 +1,36 @@
 {
-  "match": [
-    {
-      "id": "2voa0a4kl2whr3vr",
-      "interest": "Gamer",
-      "location": "Gradina Botanica",
-      "start_date": 1651965746535,
-      "user1_id": "2voa0dd2l2wxdgry",
-      "user2_id": "2voa0dosl2wyqktr",
-      "end_date": 1652570546535
-    },
-    {
-      "id": "2voa0dpzl2wytbai",
-      "interest": "Gamer",
-      "location": "Palas",
-      "start_date": 1651994402922,
-      "user1_id": "2voa0dpzl2wyr4ei",
-      "user2_id": "2voa0dd2l2wxdgry",
-      "end_date": 1652599202922
-    },
-    {
-      "id": "2voa0em2l2x0bt57",
-      "interest": "Gamer",
-      "location": "Releu",
-      "start_date": 1651824145483,
-      "user1_id": "2voa0em2l2x0bt56",
-      "user2_id": "2voa0dosl2wyqktr",
-      "end_date": 1652428945483
-    },
-    {
-      "id": "2voa0em2l2x0bt58",
-      "interest": "Artist",
-      "location": "Palas",
-      "start_date": 1651305745483,
-      "user1_id": "2voa0em2l2x0bt56",
-      "user2_id": "2voa0dpzl2wyr4ei",
-      "end_date": 1651910545483
-    },
-    {
-      "id": "2voa0em2l2x0bt59",
-      "interest": "Music lover",
-      "location": "Gradina Botanica",
-      "start_date": 1650873745483,
-      "user1_id": "2voa0em2l2x0bt56",
-      "user2_id": "2voa0dosl2wyqktr",
-      "end_date": 1651478545483
-    },
-    {
-      "id": "2voa0em2l2x0bt5a",
-      "interest": "Programmer",
-      "location": "Releu",
-      "start_date": 1650182545483,
-      "user1_id": "2voa0em2l2x0bt56",
-      "user2_id": "2voa0bn1l2wtori4",
-      "end_date": 1650787345483
-    },
-    {
-      "id": "2voa0em2l2x0bt5b",
-      "interest": "Swiming",
-      "location": "Starbucks",
-      "start_date": 1649836945483,
-      "user1_id": "2voa0em2l2x0bt56",
-      "user2_id": "2voa0a4kl2whqe5t",
-      "end_date": 1650441745483
-    },
-    {
-      "id": "2voa0em2l2x0ciy2",
-      "interest": "Gamer",
-      "location": "Releu",
-      "start_date": 1651824178921,
-      "user1_id": "2voa0em2l2x0ciy1",
-      "user2_id": "2voa0dosl2wyqktr",
-      "end_date": 1652428978921
-    },
-    {
-      "id": "2voa0em2l2x0ciy3",
-      "interest": "Artist",
-      "location": "Palas",
-      "start_date": 1651305778921,
-      "user1_id": "2voa0em2l2x0ciy1",
-      "user2_id": "2voa0dpzl2wyr4ei",
-      "end_date": 1651910578921
-    },
-    {
-      "id": "2voa0em2l2x0ciy4",
-      "interest": "Music lover",
-      "location": "Starbucks",
-      "start_date": 1650873778922,
-      "user1_id": "2voa0em2l2x0ciy1",
-      "user2_id": "2voa0dosl2wyqktr",
-      "end_date": 1651478578922
-    },
-    {
-      "id": "2voa0em2l2x0ciy5",
-      "interest": "Programmer",
-      "location": "Gradina Botanica",
-      "start_date": 1650182578922,
-      "user1_id": "2voa0em2l2x0ciy1",
-      "user2_id": "2voa0bn1l2wtori4",
-      "end_date": 1650787378922
-    },
-    {
-      "id": "2voa0em2l2x0ciy6",
-      "interest": "Swiming",
-      "location": "Releu",
-      "start_date": 1649836978922,
-      "user1_id": "2voa0em2l2x0ciy1",
-      "user2_id": "2voa0a4kl2whqe5t",
-      "end_date": 1650441778922
-    }
-  ],
-  "review": [
-    {
-      "friend_id": "2voa0a4kl2whoiix",
-      "rating": 4,
-      "user_id": "2voa0a4kl2whqe5t"
-    },
-    {
-      "friend_id": "2voa0dpzl2wyr4ei",
-      "rating": 4,
-      "user_id": "2voa0dd2l2wxdgry"
-    },
-    {
-      "friend_id": "2voa0dosl2wyqktr",
-      "rating": 5,
-      "user_id": "2voa0em2l2x0bt56"
-    },
-    {
-      "friend_id": "2voa0em2l2x0bt56",
-      "rating": 5,
-      "user_id": "2voa0dosl2wyqktr"
-    },
-    {
-      "friend_id": "2voa0dpzl2wyr4ei",
-      "rating": 1,
-      "user_id": "2voa0em2l2x0bt56"
-    },
-    {
-      "friend_id": "2voa0em2l2x0bt56",
-      "rating": 2,
-      "user_id": "2voa0dpzl2wyr4ei"
-    },
-    {
-      "friend_id": "2voa0dosl2wyqktr",
-      "rating": 2,
-      "user_id": "2voa0em2l2x0bt56"
-    },
-    {
-      "friend_id": "2voa0em2l2x0bt56",
-      "rating": 3,
-      "user_id": "2voa0dosl2wyqktr"
-    },
-    {
-      "friend_id": "2voa0bn1l2wtori4",
-      "rating": 2,
-      "user_id": "2voa0em2l2x0bt56"
-    },
-    {
-      "friend_id": "2voa0em2l2x0bt56",
-      "rating": 4,
-      "user_id": "2voa0bn1l2wtori4"
-    },
-    {
-      "friend_id": "2voa0a4kl2whqe5t",
-      "rating": 4,
-      "user_id": "2voa0em2l2x0bt56"
-    },
-    {
-      "friend_id": "2voa0em2l2x0bt56",
-      "rating": 3,
-      "user_id": "2voa0a4kl2whqe5t"
-    },
-    {
-      "friend_id": "2voa0dosl2wyqktr",
-      "rating": 5,
-      "user_id": "2voa0em2l2x0ciy1"
-    },
-    {
-      "friend_id": "2voa0em2l2x0ciy1",
-      "rating": 5,
-      "user_id": "2voa0dosl2wyqktr"
-    },
-    {
-      "friend_id": "2voa0dpzl2wyr4ei",
-      "rating": 2,
-      "user_id": "2voa0em2l2x0ciy1"
-    },
-    {
-      "friend_id": "2voa0em2l2x0ciy1",
-      "rating": 3,
-      "user_id": "2voa0dpzl2wyr4ei"
-    },
-    {
-      "friend_id": "2voa0dosl2wyqktr",
-      "rating": 2,
-      "user_id": "2voa0em2l2x0ciy1"
-    },
-    {
-      "friend_id": "2voa0em2l2x0ciy1",
-      "rating": 4,
-      "user_id": "2voa0dosl2wyqktr"
-    },
-    {
-      "friend_id": "2voa0bn1l2wtori4",
-      "rating": 1,
-      "user_id": "2voa0em2l2x0ciy1"
-    },
-    {
-      "friend_id": "2voa0em2l2x0ciy1",
-      "rating": 5,
-      "user_id": "2voa0bn1l2wtori4"
-    },
-    {
-      "friend_id": "2voa0a4kl2whqe5t",
-      "rating": 2,
-      "user_id": "2voa0em2l2x0ciy1"
-    },
-    {
-      "friend_id": "2voa0em2l2x0ciy1",
-      "rating": 1,
-      "user_id": "2voa0a4kl2whqe5t"
-    }
-  ],
   "user": [
     {
-      "id": "2voa0a4kl2whoiix",
-      "avatar": [3, 5, 1],
-      "birthday_year": "2003",
-      "created_at": 1651965625544,
-      "friends": ["2voa0a4kl2whqe5t"],
-      "gender": "",
-      "interests": [],
-      "name": "Andrei",
-      "password": "fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe",
-      "phone": "+40752349113"
-    },
-    {
-      "id": "2voa0a4kl2whqe5t",
-      "avatar": [3, 2, 1],
-      "birthday_year": "2003",
-      "created_at": 1651965713201,
-      "friends": ["2voa0a4kl2whoiix"],
-      "interests": [],
-      "name": "andrei",
-      "password": "3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2",
-      "phone": "07666666"
-    },
-    {
-      "id": "2voa0bn1l2wtori4",
-      "avatar": [3, 2, 1],
-      "birthday_year": "2002",
-      "created_at": 1651985792571,
-      "friends": [],
-      "interests": [],
-      "name": "meta",
-      "password": "3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2",
-      "phone": "07666666546"
-    },
-    {
-      "id": "2voa0dd2l2wxdgry",
-      "avatar": [0, 2, 1],
-      "birthday_year": "2003",
-      "created_at": 1651991983917,
-      "friends": ["2voa0dpzl2wyr4ei"],
-      "gender": "",
-      "interests": [],
-      "name": "AndrewIGD",
-      "password": "3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2",
-      "phone": "+63465345345"
-    },
-    {
-      "id": "2voa0dosl2wyqktr",
-      "avatar": [2, 4, 3],
-      "birthday_year": "2002",
-      "created_at": 1651994275310,
-      "friends": [],
-      "interests": [],
-      "name": "david",
-      "password": "3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2",
-      "phone": "0728922950"
-    },
-    {
-      "id": "2voa0dpzl2wyr4ei",
-      "avatar": [2, 0, 1],
+      "id": "2voa0ewtl2x15nls",
+      "avatar": [1, 2, 3],
       "birthday_year": "2005",
-      "created_at": 1651994300681,
-      "friends": [],
+      "created_at": 1651998337983,
+      "friends": [
+        "2voa0dosl2wyqktr",
+        "2voa0dpzl2wyr4ei",
+        "2voa0bn1l2wtori4",
+        "2voa0a4kl2whqe5t"
+      ],
       "interests": [],
-      "name": "dragos",
-      "password": "3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2",
-      "phone": "07289543534"
-    },
-    {
-      "id": "2voa0e43l2wzjvkc",
-      "avatar": [2, 1, 3],
-      "birthday_year": "2005",
-      "created_at": 1651995642251,
-      "friends": [],
-      "interests": [],
-      "name": "VLAD",
+      "name": "Leonte",
       "password": "fb131bc57a477c8c9d068f1ee5622ac304195a77164ccc2d75d82dfe1a727ba8d674ed87f96143b2b416aacefb555e3045c356faa23e6d21de72b85822e39fdd",
-      "phone": "111"
+      "phone": "909312"
     },
     {
-      "id": "2voa0ekhl2x0ap6d",
-      "avatar": [3, 4, 0],
+      "id": "2voa0eyel2x16suw",
+      "avatar": [4, 3, 2],
       "birthday_year": "2005",
-      "created_at": 1651996893684,
-      "friends": [],
+      "created_at": 1651998391447,
+      "friends": [
+        "2voa0dosl2wyqktr",
+        "2voa0dpzl2wyr4ei",
+        "2voa0bn1l2wtori4",
+        "2voa0a4kl2whqe5t"
+      ],
       "interests": [],
-      "name": "testatila",
+      "name": "Vlad",
       "password": "fb131bc57a477c8c9d068f1ee5622ac304195a77164ccc2d75d82dfe1a727ba8d674ed87f96143b2b416aacefb555e3045c356faa23e6d21de72b85822e39fdd",
-      "phone": "782312343"
-    },
-    {
-      "id": "2voa0em2l2x0bt56",
-      "avatar": [3, 4, 0],
-      "birthday_year": "2005",
-      "created_at": 1651996945481,
-      "friends": [],
-      "interests": [],
-      "name": "lopa",
-      "password": "fb131bc57a477c8c9d068f1ee5622ac304195a77164ccc2d75d82dfe1a727ba8d674ed87f96143b2b416aacefb555e3045c356faa23e6d21de72b85822e39fdd",
-      "phone": "7823123432131"
-    },
-    {
-      "id": "2voa0em2l2x0ciy1",
-      "avatar": [3, 4, 0],
-      "birthday_year": "2005",
-      "created_at": 1651996978921,
-      "friends": [],
-      "interests": [],
-      "name": "register",
-      "password": "fb131bc57a477c8c9d068f1ee5622ac304195a77164ccc2d75d82dfe1a727ba8d674ed87f96143b2b416aacefb555e3045c356faa23e6d21de72b85822e39fdd",
-      "phone": "909"
+      "phone": "123123"
     }
   ]
 }
