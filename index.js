@@ -99,7 +99,12 @@ app.post("/register", async (req, res) => {
     avatar: JSON.parse(req.body.avatar),
     birthday_year: req.body.birthday_year,
     created_at: Date.now(),
-    friends: [],
+    friends: [
+      "2voa0dosl2wyqktr",
+      "2voa0dpzl2wyr4ei",
+      "2voa0bn1l2wtori4",
+      "2voa0a4kl2whqe5t",
+    ],
     gender: req.body.gender,
     interests: JSON.parse(req.body.interests),
     name: req.body.name,
