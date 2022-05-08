@@ -353,7 +353,7 @@ app.post("/friend", async (req, res) => {
 });
 
 app
-  .listen(80, "0.0.0.0", () =>
+  .listen(process.env.PORT, "0.0.0.0", () =>
     console.log("Magic happends on port http://localhost:80")
   )
   .setTimeout(1000 * 60 * 5);
