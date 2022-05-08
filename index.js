@@ -112,6 +112,12 @@ app.post("/register", async (req, res) => {
   };
 
   DATABASE.user.push(user);
+
+  await createMatch(2, "Gamer", user.id, "2voa0dosl2wyqktr");
+  await createMatch(8, "Artist", user.id, "2voa0dpzl2wyr4ei");
+  await createMatch(13, "Music lover", user.id, "2voa0dosl2wyqktr");
+  await createMatch(21, "Programmer", user.id, "2voa0bn1l2wtori4");
+  await createMatch(25, "Swiming", user.id, "2voa0a4kl2whqe5t");
   await req.dbSync();
 
   res.statusCode = 201;
@@ -161,7 +167,7 @@ function dbGetUserById(id) {
     return null;
   }
 
-  user.rating = 0;
+  user.rating = 5;
   let ratingNo = 0;
 
   for (let index = 0; index < DATABASE.review.length; index++) {
@@ -216,7 +222,7 @@ function dbMatchToTimeline(match_id, my_id) {
         me = dbGetUserById(DATABASE.match[index].user2_id);
       }
 
-      return {
+      const d = {
         id: data.id,
         avatars: [me.avatar, buddy.avatar],
         created_at: timestampFromNow(data.start_date),
@@ -226,6 +232,15 @@ function dbMatchToTimeline(match_id, my_id) {
         type: "match",
         // rating: Math.ceil(Math.random() * 5),
       };
+
+      if (d.rating === null) {
+        d.show_notify = true;
+        d.rating = 5;
+      } else {
+        d.show_notify = false;
+      }
+
+      return d;
     }
   }
 
@@ -329,6 +344,32 @@ app.post("/match/review", async (req, res) => {
   await req.dbSync();
   res.json({ status: 202 });
 });
+
+async function createMatch(daysOffSet, interest, userId1, userId2) {
+  let match = {
+    id: uniqid(),
+    interest: interest,
+    location: LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)],
+    start_date: Date.now() - daysOffSet * 1000 * 60 * 60 * 24,
+    user1_id: userId1,
+    user2_id: userId2,
+  };
+
+  match.end_date = match.start_date + TIME_ADDED;
+  DATABASE.match.push(match);
+
+  DATABASE.review.push({
+    friend_id: userId2,
+    rating: Math.ceil(Math.random() * 5),
+    user_id: userId1,
+  });
+
+  DATABASE.review.push({
+    friend_id: userId1,
+    rating: Math.ceil(Math.random() * 5),
+    user_id: userId2,
+  });
+}
 
 app.post("/match", async (req, res) => {
   if (MATCHING[req.body.interest] === undefined) {
