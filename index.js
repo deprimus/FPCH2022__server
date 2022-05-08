@@ -34,6 +34,7 @@ const LOCATIONS = ["Starbucks", "Releu", "Gradina Botanica", "Palas"];
 const TIME_ADDED = 1000 * 60 * 60 * 24 * 7; //7 DAYS
 
 const app = express();
+app.use(express.static("./public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -117,6 +118,16 @@ app.post("/register", async (req, res) => {
   res.json({ data: dbGetUserById(user.id), status: 201 });
 });
 
+app.get("/user/:id", (req, res) => {
+  const user = dbGetUserById(req.params.id);
+
+  if (user === null) {
+    res.json({ status: 404 });
+  }
+
+  return res.json({ data: user, status: 200 });
+});
+
 app.use((req, res, next) => {
   for (let index = 0; index < DATABASE.user.length; index++) {
     if (DATABASE.user[index].id === req.headers.token) {
@@ -140,7 +151,7 @@ function dbGetUserById(id) {
   let user;
 
   for (let index = 0; index < DATABASE.user.length; index++) {
-    if (DATABASE.user[index].id === id) {
+    if (DATABASE.user[index].id === id || DATABASE.user[index].phone === id) {
       user = v8.deserialize(v8.serialize(DATABASE.user[index]));
       break;
     }
@@ -151,31 +162,20 @@ function dbGetUserById(id) {
   }
 
   user.rating = 0;
-  let ratingNo = 1;
+  let ratingNo = 0;
 
   for (let index = 0; index < DATABASE.review.length; index++) {
-    if (DATABASE.review[index].friend_id === id) {
+    if (DATABASE.review[index].friend_id === user.id) {
       user.rating += DATABASE.review[index].rating;
       ratingNo++;
     }
   }
 
-  user.rating /= ratingNo;
-  ratingNo--;
-
+  if (ratingNo > 0) user.rating /= ratingNo;
   user.rating = Math.ceil(user.rating);
+
   return user;
 }
-
-app.get("/user/:id", (req, res) => {
-  const user = dbGetUserById(req.params.id);
-
-  if (user === null) {
-    res.json({ status: 404 });
-  }
-
-  return res.json({ data: user, status: 200 });
-});
 
 app.delete("/match", (req, res) => {
   if (MATCHING[req.body.interest] === req.user.id) {
@@ -204,7 +204,7 @@ function dbGetReview(friend_id, my_id) {
 function dbMatchToTimeline(match_id, my_id) {
   for (let index = 0; index < DATABASE.match.length; index++) {
     if (DATABASE.match[index].id === match_id) {
-      const data = v8.serialize(v8.deserialize(DATABASE.match[index]));
+      const data = v8.deserialize(v8.serialize(DATABASE.match[index]));
 
       let me, buddy;
 
@@ -218,12 +218,13 @@ function dbMatchToTimeline(match_id, my_id) {
 
       return {
         id: data.id,
-        type: "match",
         avatars: [me.avatar, buddy.avatar],
         created_at: timestampFromNow(data.start_date),
         location: data.location,
         rating: dbGetReview(buddy.id, me.id),
         title: buddy.name,
+        type: "match",
+        // rating: Math.ceil(Math.random() * 5),
       };
     }
   }
@@ -247,6 +248,53 @@ app.get("/match", (req, res) => {
   res.json({ status: 404 });
 });
 
+app.get("/match/:id", (req, res) => {
+  for (let index = DATABASE.match.length - 1; index > -1; index--) {
+    if (DATABASE.match[index].id == req.params.id) {
+      return res.json({
+        data: dbMatchToTimeline(DATABASE.match[index].id, req.user.id),
+        status: 200,
+      });
+    }
+  }
+
+  res.json({ status: 404 });
+});
+
+app.get("/friend_id", (req, res) => {
+  for (let index = DATABASE.match.length - 1; index > -1; index--) {
+    if (
+      DATABASE.match[index].user1_id === req.user.id ||
+      DATABASE.match[index].user2_id === req.user.id
+    ) {
+      return res.json({
+        data:
+          req.user.id === DATABASE.match[index].user1_id
+            ? DATABASE.match[index].user2_id
+            : DATABASE.match[index].user1_id,
+        status: 200,
+      });
+    }
+  }
+
+  res.json({ status: 404 });
+});
+
+app.get("/timeline", (req, res) => {
+  const timeline = [];
+
+  for (let index = DATABASE.match.length - 1; index > -1; index--) {
+    if (
+      DATABASE.match[index].user1_id === req.user.id ||
+      DATABASE.match[index].user2_id === req.user.id
+    ) {
+      timeline.push(dbMatchToTimeline(DATABASE.match[index].id, req.user.id));
+    }
+  }
+
+  res.json({ data: timeline, status: 200 });
+});
+
 app.post("/match/review", async (req, res) => {
   let match;
 
@@ -266,10 +314,10 @@ app.post("/match/review", async (req, res) => {
 
   let buddy_id;
 
-  if (DATABASE.match[index].user1_id === req.user.id) {
-    buddy_id = DATABASE.match[index].user2_id;
+  if (match.user1_id === req.user.id) {
+    buddy_id = match.user2_id;
   } else {
-    buddy_id = DATABASE.match[index].user1_id;
+    buddy_id = match.user1_id;
   }
 
   DATABASE.review.push({
@@ -328,23 +376,56 @@ app.post("/match", async (req, res) => {
 });
 
 app.get("/friend", async (req, res) => {
-  const friends = [];
+  let friends = [];
 
   for (let index = 0; index < DATABASE.user.length; index++) {
-    if (DATABASE.user[index].user_id === req.user.id) {
-      friends.push(dbGetUserById(DATABASE.user[index].friend_id));
+    if (DATABASE.user[index].id === req.user.id) {
+      friends = DATABASE.user[index].friends.map((f) => dbGetUserById(f));
+      break;
     }
   }
 
-  res.json({ data: friends, status: 422 });
+  res.json({ data: friends, status: 200 });
 });
 
 app.post("/friend", async (req, res) => {
   for (let index = 0; index < DATABASE.user.length; index++) {
     if (DATABASE.user[index].id === req.user.id) {
-      DATABASE.user[index].friends.push(req.body.friend_id);
-      await req.dbSync();
+      if (req.body.rating) {
+        let match;
 
+        for (let index = DATABASE.match.length - 1; index > -1; index--) {
+          if (
+            DATABASE.match[index].user1_id === req.user.id ||
+            DATABASE.match[index].user2_id === req.user.id
+          ) {
+            match = v8.deserialize(v8.serialize(DATABASE.match[index]));
+            break;
+          }
+        }
+
+        if (!match) {
+          return res.json({ status: 404 });
+        }
+
+        let buddy_id;
+
+        if (match.user1_id === req.user.id) {
+          buddy_id = match.user2_id;
+        } else {
+          buddy_id = match.user1_id;
+        }
+
+        DATABASE.review.push({
+          friend_id: buddy_id,
+          rating: +req.body.rating,
+          user_id: req.user.id,
+        });
+      }
+
+      DATABASE.user[index].friends.push(req.body.friend_id);
+
+      await req.dbSync();
       return res.json({ status: 201 });
     }
   }
@@ -353,7 +434,7 @@ app.post("/friend", async (req, res) => {
 });
 
 app
-  .listen(process.env.PORT, "0.0.0.0", () =>
+  .listen(process.env.PORT || 80, "0.0.0.0", () =>
     console.log("Magic happends on port http://localhost:80")
   )
   .setTimeout(1000 * 60 * 5);
